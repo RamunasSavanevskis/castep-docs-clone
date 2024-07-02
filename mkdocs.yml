@@ -61,6 +61,13 @@ nav:
         - 'Overview': 'documentation/Pseudopotentials/overview.md'
         - 'Headers': 'documentation/Pseudopotentials/reading_headers.md'
         - 'OTFG string': 'documentation/Pseudopotentials/otfg_string.md'
+      - 'GA':
+        - 'GA - temp': 'documentation/GA/GA.md'
+        - 'GA Outline': 'documentation/GA/GA_Outline.md'
+        - 'Running calulations': 'documentation/GA/Running_calculations.md'
+        - 'Inputs': 'documentation/GA/Inputs.md'
+        - 'Restarting': 'documentation/GA/Restarting.md'
+        - 'Footnotes': 'documentation/GA/Footnotes.md'
       - 'Input Files':
         - 'cell File':  'documentation/Input_Files/cell_file.md'
         - 'param File': 'documentation/Input_Files/param_file.md'
