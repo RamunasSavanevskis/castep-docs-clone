@@ -42,7 +42,7 @@ The general process is outlined below:
     `ga_pop_size` children have been created.
 
 8.  The child population is relaxed using a standard CASTEP geometry
-    optimisation using the parameters in `<seed>.param` as in steps 3-5i
+    optimisation using the parameters in `<seed>.param` as in steps 3-5
     above.
 
 9.  The union of parent and child populations is now trimmed using the
@@ -68,5 +68,4 @@ The command used to call CASTEP for the cell relaxations is given in a
 devel code block in between the flags `CMD:` and `:ENDCMD`, though
 default is `castep.serial` parralelised methods such as
 `mpirun castep.mpi` can also be used. See
-[*Command for Calling Castep (\~CMD\~)*]{.spurious-link
-target="Command for Calling Castep (~CMD~)"}.
+[Command for calling castep](Input_Options.md#command-for-calling-castep-cmd)
