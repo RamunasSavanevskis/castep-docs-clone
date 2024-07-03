@@ -59,7 +59,7 @@ General inputs for the GA that may be set in the `<seed>.param` file:
 
 ## General Inputs - Devel Block - core GA
 
-Additional functionality is available within the \"devel block\" part of
+Additional functionality is available within the "devel block" part of
 the `<seed>.param` file. This is beta functionality, that may be removed
 in the future, or promoted to full CASTEP keyword status:
 
@@ -87,11 +87,11 @@ in the future, or promoted to full CASTEP keyword status:
 :   Periodic cut: Whether or not to use periodic or planar cuts.
 
 `PR (real)`
-:   Permute rate: Probability of a pair of atoms\' positions being
+:   Permute rate: Probability of a pair of atoms' positions being
     permuted the mutation step.
 
 `SPR (real)`
-:   Spin permute rate: Probability of a pair of atoms\' spins being
+:   Spin permute rate: Probability of a pair of atoms' spins being
     permuted in the mutation step.
 
 `GT (logical)`
@@ -192,7 +192,7 @@ options, which were added in MOGA development, are also valid GA options
 
 `RSC`
 
-:   \[default `T` if `NUM_CHILDREN` \>9 else `F` \] Boolean, add
+:   [default ```T``` if `NUM_CHILDREN` \>9 else `F` \] Boolean, add
     randomly generated cells from unrepresented (or under represented)
     space groups to child populations before cell relaxation. Note,
     default behaviour (if `RSC` not given) will reduce `NUM_CHILDREN` by
@@ -213,19 +213,19 @@ options, which were added in MOGA development, are also valid GA options
         population.
 
 `RSN`
-:   \[default `1` \] Add this many randomly generated children of
+:   [default ```1``` ] Add this many randomly generated children of
     unrepresented space group at every generation where children are
     added. Requires `RSC=T` to use.
 
 `RSG`
-:   \[default `1` \] Integer: Random Symmetry Generation. Add random
+:   [default ```1```] Integer: Random Symmetry Generation. Add random
     cells to the child population of generation 1 and then every `RSG`
     generations afterwards. E.g. for `RSG=2` new children will be added
     to child population of generation 1,3,5,... Requires `RSC=T` to use.
 
 `IPM`
 
-:   \[default `M` \] Initial Population Method: The method used for
+:   [default ```M``` ] Initial Population Method: The method used for
     initial population generation, where the parent population of
     generation 0 is created from the input `<seed>.cell`.
 
@@ -242,7 +242,7 @@ options, which were added in MOGA development, are also valid GA options
         in `<seed>.cell` represented.
 
 `RSGL`
-:   \[Integer, default \~100\~\] Maximum number of times to attempt a
+:   [Integer, default ```100```] Maximum number of times to attempt a
     generation of a random lattice in random high symmetry cell
     generation. Each will have a maximum number of RSGI attempts to
     place ions in the lattice to create a cell of the given space group,
@@ -250,19 +250,14 @@ options, which were added in MOGA development, are also valid GA options
     a given space group.
 
 `RSGI`
-:   \[Integer, default \~10\~\] Maximum number of times to attempt to
+:   [Integer, default ```10```] Maximum number of times to attempt to
     populate a randomly generated lattice with ions during high symmetry
     cell generation. Therefore, maximum attempts at cell generation is
     RSGL x RSGI, with generation exiting as soon as a valid cell is
     found.
 
 `FCGO`
-:   \[default \~F\~\] \`Fixed cell geom opt\', if \`T\' then each
-    population members geometry optimisation will be a fixed cell geom
-    opt. The cell will be allowed to change only during
-    mutation/breeding/etc, not in the geom opt. If set to \'F\' this
-    wont occur. Note: If \'T\' then fix~allcell~ cannot be given as a
-    cell parameter in input cell.
+:   [default ```F```] Fixed cell geom opt, if ```T``` then each population members geometry optimisation will be a fixed cell geom opt. The cell will be allowed to change only during mutation/breeding/etc, not in the geom opt. If set to ```F``` this won't occur. Note: If ```T``` then fix ```allcell``` cannot be given as a cell parameter in input cell.
 
 ### `NUM_CHILDREN` and Population Size
 
@@ -423,7 +418,7 @@ attempts to generate a cell is currently set to 100. If this is exceeded
 then the cell generation is considered a failure and a different target
 space group is chosen for random cell generation.
 
-Once the cell has been generated it is tested with spglib [^7] to make
+Once the cell has been generated it is tested with spglib^[7]^ to make
 sure it is of the correct space group. If it is then the lattice vectors
 are adjusted proportionally such that the cell density is equal to the
 average density of cells in the parent population.
@@ -486,8 +481,8 @@ members/generations evaluated.
 By default each generation the number of children bred is the same as
 the number of parents given by `ga_pop_size`. This can be changed by
 adding randomly generated cells (see
-[*Addition of Randomly Generated Children (\~RSC\~, \~RSG\~ & \~RSN\~)*]{.spurious-link
-target="Addition of Randomly Generated Children (~RSC~, ~RSG~ & ~RSN~)"})
+[Addition of Randomly Generated Children (RSC, RSG & RSN)](Input_Options.md#addition-of-randomly-generated-children-rsc-rsg-rsn))
+
 or by changing the base size of the child population.
 
 If `NUM_CHILDREN` is not set then each generation consists of taking a
