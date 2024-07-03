@@ -15,11 +15,9 @@ directory is placed in the `$PATH` then use `castep_GA <seed>` where
 
 Note that `castep_GA` is a serial program that will seed CASTEP
 calculations based on the command given in the `CMD` devel flags (see
-[*Serial and Parallel Calculations*]{.spurious-link
-target="Serial and Parallel Calculations"},
-[*Requirements*]{.spurious-link target="Requirements"} and
-[*Command for Calling Castep (\~CMD\~)*]{.spurious-link
-target="Command for Calling Castep (~CMD~)"}), if not given all seeded
+[Serial and Parallel Calculations](Outline.md#serial-and-parallel-calculations),
+[Requirements](Requirements.md) and
+[Command for Calling Castep](Input_Options.md#command-for-calling-castep-cmd), if not given all seeded
 calculations will be serial called with `castep.serial`.
 
 ## General Inputs - Normal Parameters - GA
