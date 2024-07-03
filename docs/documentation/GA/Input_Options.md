@@ -185,14 +185,14 @@ options, which were added in MOGA development, are also valid GA options
     optimisations in a generation the MOGA will exit with an error.
 
 `SS`
-:   \[default `F` \] Use the \`snap to symmetry\' method for
+:   [default ```F```] Use the ```snap to symmetry``` method for
     optimisation (T/F). This means geometry optimisation is carried out,
     then snapped to symmetry sites, then relaxed further with a fixed
     cell geometry optimisation.
 
 `RSC`
 
-:   [default ```T``` if `NUM_CHILDREN` \>9 else `F` \] Boolean, add
+:   [default ```T``` if `NUM_CHILDREN` \>9 else `F` ], add
     randomly generated cells from unrepresented (or under represented)
     space groups to child populations before cell relaxation. Note,
     default behaviour (if `RSC` not given) will reduce `NUM_CHILDREN` by
