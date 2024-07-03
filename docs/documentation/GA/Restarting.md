@@ -38,7 +38,7 @@ follows that the children will also probably differ.
 ## NOTE: Automatic File Deletion
 
 If the GA is restarted, it will attempt to **delete all the files** used
-for the \"next\" generation. This is the generation after the last fully
+for the "next" generation. This is the generation after the last fully
 completed generation. This is because the GA needs a specific file
 format for the files it creates/reads from, and having files already
 existent and appending to them will break the GA workflow.
