@@ -2,52 +2,6 @@
 
 ## Introduction
 
-The standard geometry optimization routines in CASTEP only perform a
-local optimiziation. That is, the final state might not be the global
-minimum enthalpy structure. Hence, the final structure found will be the
-optimal state that exists within the basin of attraction of the initial
-state. If working for example from an initial guess at a structure
-guided by experimental knowledge or a known structure from ICSD etc,
-this is often sufficient. However, if there is no experimental data to
-guide, then this is just guesswork. Hence there is a real need for a
-global optimization approach, that can reliably find the global optimal
-structure without a priori information. There are various approaches to
-this problem, including Chris Pickard\'s AIRSS (Ab Initio Random
-Structure Search) and the Genetic Algorithm (GA) approach used here.
-Both of these different approaches use CASTEP for the local optimization
-but differ in their approach:
-
--   AIRSS uses many different random guesses at an initial structure
--   GA generates an initial population of guesses and then uses
-    evolutionary ideas to breed and mutate these so that successive
-    generations evolve into better structures.
-
-The first application of the GA idea to crystal structure prediction was
-[^1] which was then extended to include a \'fingerprint\' method to
-enhance structural diversity and prevent stagnation [^2]. A full
-explanation of this initial version can be found in the PhD thesis of
-Luke Abraham [^3]. This initial version (v1) of castep~GA~ was not
-released, as it was not very robust. The code was tightly integrated
-with the rest of CASTEP, so that if any one of the structures
-(population member) within the different generations failed to converge,
-the whole calculation aborted. This led to a signicant codebase change
-with v2 now \"spawning\" seperate CASTEP instances to do the local
-geometry optimization. The code was still built upon the CASTEP
-codebase, but was now robust to any structures failing to converge. This
-version also contained new features to handle spin, so that castep~GA~
-could now breed (vector) spin structures in addition to atomic
-structures using a new \'spin fingerprint\' algorithm [^4]. This is
-fully explained in the PhD thesis of Ed Higgins [^5]. As well as being
-able to search for bulk crystal structures, the castep~GA~ can also
-search for interface or surface reconstructions - an example being the
-Si\[111\](7x7) reconstruction studied in [^6]. Finally, in v3, the
-ability to add random cells and cells with randomly chosen space groups
-were added and the Multi Objective GA (MOGA) approach was implemented,
-as described in the seperate readme~MOGA~ docs by Scott Donaldson. This
-enables the user to search for structures that are Pareto optimal with
-an abitrary choice of optimization functions via a flexible script-based
-approach. Further details can be found in \[fn scott report\]. This is
-the basis of the first version of castep~GA~ for general release.
 
 ## GA Overview
 
