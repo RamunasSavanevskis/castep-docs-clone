@@ -300,3 +300,9 @@ Next let's look at the relative contractions for all of them.
 Like before, this is indicative of covalent bonding: since they both contract (including the electronegative species) that means that electron shell is moving from the individual atoms into the bond. However, like in GaAs, there is a difference between the electropositive and electronegative species due to the electrons being more likely to be distributed around the electronegative one, effectively growing it while shrinking the electropositive one.
 
 In this, there is again an indication of decreasing electronegativity as you go down the periodic table: the contraction of hydrogen decreases, which is evidence of hydrogen's electron being less likely to be at the halogen - meaning its electronegativity is lower
+
+### Issues
+
+The main problem with the above analysis is that Hirshfeld does not say where the atoms go - the hydrogen may be shrinking more because the electronegativity difference is higher and its electron is less likely to be near it, or it could also be because the covalent bond is getting weaker so it's less likely to be found in the bonding region.
+
+The halogen shrinkage is hard to interpret as well. A smaller % contraction can either mean it's more electronegative (contradicting what's known and the above analysis), weaker covalent bonding, and/or, as is the case here, simply because the atom is larger - the more inner shells there are, the less affected the atom volume will be by what the outer shell electrons are doing.
