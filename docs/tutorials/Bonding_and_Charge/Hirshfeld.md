@@ -114,4 +114,61 @@ Si       2                -0.00
 
 As expected, both atoms are identical and the Hirshfeld charges are 0 - this is already known intuitively and from the Mulliken analysis.
 
-However, this contains some new data - Free atom volume and Hirshfeld atomic volume. 
+However, this contains some new data - Free atom volume and Hirshfeld atomic volume. The atomic volume is about 6.79(ANGSTROMS) smaller, corresponding to a contraction of 6.4%.
+
+The numbers alone don't tell us much, but we can make some interesting conclusions if we compare it to the other diamond structures:
+
+*diamond.castep*
+```
+Species     1,  Atom     1  :  C
+ ...
+ Free atom volume (Bohr**3) :
+                                      38.933903844
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                      -0.000004409
+ Hirshfeld atomic volume (Bohr**3) :
+                                      35.367220474
+ Hirshfeld / free atomic volume :
+                                       0.908391324
+```
+
+*GaAs.castep*
+
+```
+Species     1,  Atom     1  :  Ga
+...
+ Free atom volume (Bohr**3) :
+                                     117.353896691
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                       0.111060719
+ Hirshfeld atomic volume (Bohr**3) :
+                                     111.582933619
+ Hirshfeld / free atomic volume :
+                                       0.950824274
+
+Species     2,  Atom     1  :  As
+...
+ Free atom volume (Bohr**3) :
+                                     110.726221123
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                      -0.111060719
+ Hirshfeld atomic volume (Bohr**3) :
+                                     106.824797235
+ Hirshfeld / free atomic volume :
+                                       0.964765131
+
+
+    Hirshfeld Analysis
+    ------------------
+Species   Ion     Hirshfeld Charge (e)
+======================================
+ Ga       1                 0.11
+ As       1                -0.11
+======================================
+```
