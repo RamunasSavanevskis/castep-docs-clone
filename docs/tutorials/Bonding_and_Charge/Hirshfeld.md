@@ -1,1 +1,8 @@
 Whereas in the [Mulliken population analysis tutorial](mulliken_population.md) we performed population analysis using the [Mulliken algorithm](../../documentation/Groundstate/population_analysis.md#mulliken-population-analysis) (which is done by default), we will now use the [Hirshfeld algorithm](../../documentation/Groundstate/population_analysis.md#the-hirshfeld-partitioning-scheme) to get more and different results.
+
+!!! note
+
+    It is recommended you go through the [previous (Mulliken) tutorial](mulliken_population.md) as the steps are very similar
+
+
+## Running the code
