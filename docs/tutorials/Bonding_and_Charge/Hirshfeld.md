@@ -69,3 +69,49 @@ IPRINT : 2
 ```
 
 Will give more information - without it only the Hirshfeld charges will be added, while this gives more interesting information such as atomic volumes.
+
+After running castep for the structures, we see towards the end of the `.castep` output files:
+
+*Si.castep*
+
+```
+Species     1,  Atom     1  :  Si
+...
+Free atom volume (Bohr**3) :
+                                    105.995197080
+Hirshfeld total electronic charge (e) :
+                                      0.000000000
+Hirshfeld net atomic charge (e) :
+                                      0.000001738
+Hirshfeld atomic volume (Bohr**3) :
+                                     99.207952643
+Hirshfeld / free atomic volume :
+                                      0.935966491
+...
+Species     1,  Atom     2  :  Si
+...
+Free atom volume (Bohr**3) :
+                                    105.996110529
+Hirshfeld total electronic charge (e) :
+                                      0.000000000
+Hirshfeld net atomic charge (e) :
+                                     -0.000001738
+Hirshfeld atomic volume (Bohr**3) :
+                                     99.209046098
+Hirshfeld / free atomic volume :
+                                      0.935968741
+
+
+   Hirshfeld Analysis
+   ------------------
+Species   Ion     Hirshfeld Charge (e)
+======================================
+Si       1                 0.00
+Si       2                -0.00
+======================================
+
+```
+
+As expected, both atoms are identical and the Hirshfeld charges are 0 - this is already known intuitively and from the Mulliken analysis.
+
+However, this contains some new data - Free atom volume and Hirshfeld atomic volume. 
