@@ -308,3 +308,13 @@ Species   Ion     Hirshfeld Charge (e)
 ```
 
 Comparing to the [Mulliken analysis](mulliken_population.md) (the results of which are again present in the same `castep` file), you may notice that the Hirshfeld charges are smaller than the Mulliken ones (as opposed to [GaAs](#GaAs_charges), where they were larger) - ((EXPLAIN WHY??))
+
+Next let's look at the relative contractions for all of them.
+
+* HF: H -40.2%, F -4.7%
+* HCl: H -23.4%, Cl -2.8%
+* HBr: H -18.4%, Br -1.8%
+
+Like before, this is indicative of covalent bonding: since they both contract (including the electronegative species) that means that electron shell is moving from the individual atoms into the bond. However, like in GaAs, there is a difference between the electropositive and electronegative species due to the electrons being more likely to be distributed around the electronegative one, effectively growing it while shrinking the electropositive one.
+
+In this, there is again an indication of decreasing electronegativity as you go down the periodic table: the contraction of hydrogen decreases, which is evidence of hydrogen's electron being less likely to be at the halogen - meaning its electronegativity is lower
