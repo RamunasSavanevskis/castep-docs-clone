@@ -180,3 +180,5 @@ The % contraction of the atomic radius is indicative of covalent bonding: as a f
 The GaAs result is more interesting. For both ions, the contraction is smaller than Si's, indicating a weaker bond - which was shown [before](mulliken_population.md) as well. However, the Ga's atomic volume decreases more than the As's. This is proof that there is a level of ionic bonding/polarisation as well. While they both contract due to the covalent bond, electrons are more likely to be found near the As (which is more electronegative) than the Ga, meaning that the As's atomic volume is higher than it would be if the electron distribution was equal for both ions.
 
 Another thing to note is that the Hirshfeld charges are different than the Mulliken ones- for example, for GaAs they are 0.11e in Hirshfeld calculation but 0.083e in the [Mulliken](mulliken_population.md) one. COMMENT ON LATER??
+
+## Diatomic molecules
