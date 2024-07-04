@@ -187,3 +187,121 @@ Another thing to note is that the Hirshfeld charges are different than the Mulli
 We will examine the same diatomic molecules as before - HF, HCl and HBr - and see if the results agree with what the calculations said there.
 
 The `cell` files we use will be the same (ADD LINK - think its a waste to write them out again) and we will use the same `param` file for all of them as [above](#param)
+
+The results are as follows:
+
+*HF.castep*
+
+```
+Species     1,  Atom     1  :  H
+...
+ Free atom volume (Bohr**3) :
+                                      11.282018688
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                       0.209852855
+ Hirshfeld atomic volume (Bohr**3) :
+                                       6.747865069
+ Hirshfeld / free atomic volume :
+                                       0.598107950
+
+Species     2,  Atom     1  :  F
+...
+ Free atom volume (Bohr**3) :
+                                      20.173660282
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                      -0.211251954
+ Hirshfeld atomic volume (Bohr**3) :
+                                      19.218247638
+ Hirshfeld / free atomic volume :
+                                       0.952640590
+
+
+    Hirshfeld Analysis
+    ------------------
+Species   Ion     Hirshfeld Charge (e)
+======================================
+ H        1                 0.21
+ F        1                -0.21
+======================================
+```
+
+*HCl.castep*
+
+```
+Species     1,  Atom     1  :  H
+...
+ Free atom volume (Bohr**3) :
+                                      11.282018688
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                       0.107816784
+ Hirshfeld atomic volume (Bohr**3) :
+                                       8.640441867
+ Hirshfeld / free atomic volume :
+                                       0.765859560
+
+Species     2,  Atom     1  :  Cl
+...
+ Free atom volume (Bohr**3) :
+                                      65.515626441
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                      -0.107842259
+ Hirshfeld atomic volume (Bohr**3) :
+                                      63.675188092
+ Hirshfeld / free atomic volume :
+                                       0.971908406
+
+
+    Hirshfeld Analysis
+    ------------------
+Species   Ion     Hirshfeld Charge (e)
+======================================
+ H        1                 0.11
+ Cl       1                -0.11
+======================================
+```
+*HBr.castep*
+
+```
+Species     1,  Atom     1  :  H
+...
+ Free atom volume (Bohr**3) :
+                                      11.282018688
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                       0.080189170
+ Hirshfeld atomic volume (Bohr**3) :
+                                       9.207861059
+ Hirshfeld / free atomic volume :
+                                       0.816153679
+
+Species     2,  Atom     1  :  Br
+...
+ Free atom volume (Bohr**3) :
+                                      89.482329717
+ Hirshfeld total electronic charge (e) :
+                                       0.000000000
+ Hirshfeld net atomic charge (e) :
+                                      -0.080194171
+ Hirshfeld atomic volume (Bohr**3) :
+                                      87.876549029
+ Hirshfeld / free atomic volume :
+                                       0.982054773
+
+
+    Hirshfeld Analysis
+    ------------------
+Species   Ion     Hirshfeld Charge (e)
+======================================
+ H        1                 0.08
+ Br       1                -0.08
+======================================
+```
