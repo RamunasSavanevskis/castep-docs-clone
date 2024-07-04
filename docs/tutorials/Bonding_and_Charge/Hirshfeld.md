@@ -306,3 +306,5 @@ In this, there is again an indication of decreasing electronegativity as you go 
 The main problem with the above analysis is that Hirshfeld does not say where the atoms go - the hydrogen may be shrinking more because the electronegativity difference is higher and its electron is less likely to be near it, or it could also be because the covalent bond is getting weaker so it's less likely to be found in the bonding region.
 
 The halogen shrinkage is hard to interpret as well. A smaller % contraction can either mean it's more electronegative (contradicting what's known and the above analysis), weaker covalent bonding, and/or, as is the case here, simply because the atom is larger - the more inner shells there are, the less affected the atom volume will be by what the outer shell electrons are doing.
+
+## Metals
