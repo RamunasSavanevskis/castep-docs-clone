@@ -172,3 +172,5 @@ Species   Ion     Hirshfeld Charge (e)
  As       1                -0.11
 ======================================
 ```
+
+The carbon atoms in diamond have a contraction of about 3.57(ANGSTROMS), corresponding to about 9.2%. In GaAs, the 2 ions are now different and must be looked at separately - Ga has a contraction of 5.77(ANGSTROMS) - 4.9% while As contracts by 3.9(ANGSTROMS) - 3.5%. In addition, the Ga and As ions now have charges (again intuitively and also found in Mulliken).
