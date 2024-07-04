@@ -49,6 +49,7 @@ As 0.25 0.25 0.25
 %ENDBLOCK POSITIONS_FRAC
 ```  
 The `param` files we will use are all identical -
+<a name="param"></a>
 ```
 xc_functional : LDA
 cutoff_energy : 500 eV
@@ -182,3 +183,7 @@ The GaAs result is more interesting. For both ions, the contraction is smaller t
 Another thing to note is that the Hirshfeld charges are different than the Mulliken ones- for example, for GaAs they are 0.11e in Hirshfeld calculation but 0.083e in the [Mulliken](mulliken_population.md) one. COMMENT ON LATER??
 
 ## Diatomic molecules
+
+We will examine the same diatomic molecules as before - HF, HCl and HBr - and see if the results agree with what the calculations said there.
+
+The `cell` files we use will be the same (ADD LINK - think its a waste to write them out again) and we will use the same `param` file for all of them as [above](#param)
