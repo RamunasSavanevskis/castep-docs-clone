@@ -5,9 +5,9 @@ Whereas in the [Mulliken population analysis tutorial](mulliken_population.md) w
     It is recommended you go through the [previous (Mulliken) tutorial](mulliken_population.md) as the steps are very similar
 
 
-## Diamond structures
+## Si and GaAs
 
-We will compare 4 different diamond structures - Si, diamond (carbon-diamond) and GaAs - the same as before.
+We will compare Si and GaAs
 
 For Si, we will use the same `cell` file
 
@@ -36,7 +36,7 @@ symmetry_generate
 kpoint_mp_grid 4 4 4
 
 ```
-Again, the `diamond.cell` file will be identical except the length in the `lattice_abc` block will be 2.52(ANGSTROM INSERT LATER) rather than 3.8. For `GaAs.cell` you may use
+For `GaAs.cell` you may use
 ```
 %BLOCK LATTICE_CART
 2.825 2.825 0.0
@@ -117,23 +117,7 @@ As expected, both atoms are identical and the Hirshfeld charges are 0 - this is 
 
 However, this contains some new data - Free atom volume and Hirshfeld atomic volume. The atomic volume is about 6.79(ANGSTROMS) smaller, corresponding to a contraction of 6.4%.
 
-The numbers alone don't tell us much, but we can make some interesting conclusions if we compare it to the other diamond structures:
-
-*diamond.castep*
-```
-Species     1,  Atom     1  :  C
- ...
- Free atom volume (Bohr**3) :
-                                      38.933903844
- Hirshfeld total electronic charge (e) :
-                                       0.000000000
- Hirshfeld net atomic charge (e) :
-                                      -0.000004409
- Hirshfeld atomic volume (Bohr**3) :
-                                      35.367220474
- Hirshfeld / free atomic volume :
-                                       0.908391324
-```
+The numbers alone don't tell us much, but we can make some interesting conclusions if we compare it to GaAs
 
 *GaAs.castep*
 
@@ -174,11 +158,9 @@ Species   Ion     Hirshfeld Charge (e)
 ======================================
 ```
 
-The carbon atoms in diamond have a contraction of about 3.57(ANGSTROMS), corresponding to about 9.2%. In GaAs, the 2 ions are now different and must be looked at separately - Ga has a contraction of 5.77(ANGSTROMS) - 4.9% while As contracts by 3.9(ANGSTROMS) - 3.5%. In addition, the Ga and As ions now have charges (again intuitively and also found in Mulliken).
+In GaAs, the 2 ions are now different and must be looked at separately - Ga has a contraction of 5.77(ANGSTROMS) - 4.9% while As contracts by 3.9(ANGSTROMS) - 3.5%. In addition, the Ga and As ions now have charges (again intuitively and also found in Mulliken).
 
-The % contraction of the atomic radius is indicative of covalent bonding: as a free atom covalently bonds, the electron cloud distribution effectively shifts from the atom to the bond, reducing the atomic volume - so a higher % contraction indicates higher extent of covalent bonding. This is indicative of what we have [found before](mulliken_population.md) - in diamond, carbon's covalent bonds are stronger than silicon's.
-
-The GaAs result is more interesting. For both ions, the contraction is smaller than Si's, indicating a weaker bond - which was shown [before](mulliken_population.md) as well. However, the Ga's atomic volume decreases more than the As's. This is proof that there is a level of ionic bonding/polarisation as well. While they both contract due to the covalent bond, electrons are more likely to be found near the As (which is more electronegative) than the Ga, meaning that the As's atomic volume is higher than it would be if the electron distribution was equal for both ions.
+For both ions, the contraction is smaller than Si's, indicating a weaker bond - which was shown [before](mulliken_population.md) as well. However, the Ga's atomic volume decreases more than the As's. This is proof that there is a level of ionic bonding/polarisation as well. While they both contract due to the covalent bond, electrons are more likely to be found near the As (which is more electronegative) than the Ga, meaning that the As's atomic volume is higher than it would be if the electron distribution was equal for both ions.
 
 <a name="GaAs_charges"></a>
 Another thing to note is that the Hirshfeld charges are different than the Mulliken ones- for example, for GaAs they are 0.11e in Hirshfeld calculation but 0.083e in the [Mulliken](mulliken_population.md) one. COMMENT ON LATER??
