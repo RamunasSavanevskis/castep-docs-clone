@@ -94,6 +94,8 @@ nav:
         - 'Molecular Projected DOS': 'tutorials/Delta_SCF/molpdos.md'
       - 'Tools':
         - 'Elastic Constants': 'tutorials/Tools/elastic_constants.md'
+      - 'Phonons':
+        - 'Phonons': 'tutorials/Phonons/Phonons.md'
    - 'Developer':
       - 'Using Devel Codes': 'developer/using_devel_codes.md'
       - 'Using trace': 'developer/using_trace.md'
