@@ -59,13 +59,46 @@ Once the files are set up, run Castep
 !!! note
     Phonon calculations can take a while, so it is recommended to use multiple cores if possible
 
+This generates 2 files in which we are interested: the standard `hbn.castep` output and `hbn.phonon` for phonons specifically. Let's first look at `hbn.castep`.
 
-which requests a 16-processor parallel run. Use the “qstat” command to
-monitor the progress of your calculation. When it has finished, you can
-examine the output file h-BN.castep and find the frequencies. What you
-see is explained further in the Phonons user guide on the WWW. There is
-also a machine-readable file h-BN.phonon which contains the frequencies,
-but also the eigenvectors which we will analyse.
+All the data relevant to the phonon calculations is found under the header
+
+```
+==============================================================================
++                           Vibrational Frequencies                          +
++                           -----------------------                          +
+```
+
+and, since we are only looking at the gamma point, all our results are under
+
+```
++ -------------------------------------------------------------------------- +
++  q-pt=    1 (  0.000000  0.000000  0.000000)     1.0000000000              +
++ ---------------------------------------------------------------------------
+```
+
+The main table of results relevant to this tutorial is this
+
+```
++  Acoustic sum rule correction <  26.548113 cm-1 applied                    +
++     N      Frequency irrep.    ir intensity active            raman active +
++                (cm-1)         ((D/A)**2/amu)                               +
++                                                                            +
++     1     -26.582880   a          0.0000000  N                       Y     +
++     2     -26.582880   a          0.0000000  N                       Y     +
++     3      -0.049168   b          0.0000000  N                       N     +
++     4      -0.034768   c          0.0000000  N                       N     +
++     5      -0.034768   c          0.0000000  N                       N     +
++     6      77.735088   d          0.0000000  N                       N     +
++     7     748.297431   b          4.3146565  Y                       N     +
++     8     802.240346   d          0.0000000  N                       N     +
++     9    1392.383294   a          0.0000000  N                       Y     +
++    10    1392.383294   a          0.0000000  N                       Y     +
++    11    1392.756214   c         54.8065334  Y                       N     +
++    12    1392.756214   c         54.8065334  Y                       N     +
+```
+
+This tells us the frequencies in which IR (and Raman) activity is examined, whether they are active or not, and, in the case of IR, the relative intensities of their activities. 
 
 ### Analysis of h-BN phonon output.
 
