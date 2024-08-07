@@ -100,7 +100,20 @@ The main table of results relevant to this tutorial is this
 
 The frequencies are the frequencies of all the phonon modes. Note modes 3, 4 and 5 - these are all close to 0, indicating that they are the acoustic modes (we will understand what this means better once we visualise it in the next step). The "negative" frequencies aren't actually negative but rather imaginary - this means that, when calculated, the vibrational hamiltonian is not a definite positive value, and thus the distortion would stabilise the structure - this corresponds to a mechanical instability in the system.
 
-Each phonon frequency is then evaluated as to whether it is IR and/or Raman active, and, for IR only for now, the relative intensity of the IR activity. 
+Each phonon frequency is then evaluated as to whether it is IR and/or Raman active, and, for IR only for now, the relative intensity of the IR activity.
+
+Let's take a quick look at the `hbn.phonon` output. It will include the cell structure information in the header, the same data as in the table above, and then phonon eigenvectors for each mode and ion - that table starts a bit like
+
+```
+Mode Ion                X                                   Y                                   Z
+   1   1 -0.186110205437  0.000000000000      0.428278409589  0.000000000000     -0.000000000000  0.000000000000
+   1   2  0.186110205437  0.000000000000     -0.428278409589  0.000000000000     -0.000000000000  0.000000000000
+   1   3  0.211622374796  0.000000000000     -0.486987233712  0.000000000000     -0.000000000000  0.000000000000
+   1   4 -0.211622374796  0.000000000000      0.486987233711  0.000000000000     -0.000000000000  0.000000000000
+   2   1 -0.428278409589  0.000000000000     -0.186110205437  0.000000000000      0.000000000000 -0.000000000000
+```
+
+There are 2 tables (with the same format) like this in the file - the first is simply just the results at the gamma point, while the other is for the gamma point in 001 direction - this is also the case in the `castep` file, though there the results are identical. 
 
 ### Analysis of h-BN phonon output.
 
