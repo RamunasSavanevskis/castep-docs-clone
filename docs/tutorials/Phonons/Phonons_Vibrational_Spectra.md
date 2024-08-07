@@ -2,17 +2,9 @@
 
 In this tutorial we will perform Castep phonon calculations. We will visually examine the vibrations and then examine, and compare to experiment, the IR and Raman spectra.
 
-### A. G-Point phonon in h-BN
+## G-point Phonon Spectrum of h-BN
 
-The first exercise will take you through the construction of a G point
-phonon calculation and the generation of a simple model infrared
-spectrum of a semiconductor. It will also introduce you to the use of
-some additional analysis and visualisation tools.
-
-BN is one of a family of Nitride semiconductors, which occurs in cubic
-zincblende (c-BN), hexagonal wurtzite (w-BN) and graphite-like hexagonal
-(w-BN) polymorphs. We will calculate the phonons, infrared spectrum and
-raman spectrum of h-BN.
+We will first perform a G point phonon calculation and generate a simple model infrared spectrum of hexagonal boron nitride (h-BN). We will then visualise and analyse the results.
 
 Your starting point will be the structure which is provided in a cif
 file named *h-BN.cif.* The Phonons manual
