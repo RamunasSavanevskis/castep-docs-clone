@@ -48,29 +48,17 @@ phonon_sum_rule : TRUE
 
 A key point to make is that, as specified in the `cell` file, we are using the norm-conserving pseudopotentials (`NCP`) library - this is essential to allow the use the `DFPT` method, which allows calculations outside the cell without using a supercell - something that must be done for proper phonon calculations in a crystalline system.    
 
+The line
 
-Choose the k-point set to use – remove any block KPOINT_LIST and replace
-with the line
+`phonon_kpoint_mp_grid 1 1 1`
 
-* kpoint_mp_grid 7 7 4*
+is used to specify the gamma-point phonon wavevector.
 
-and one to specify a gamma-point *phonon* wavevector
+Once the files are set up, run Castep
 
-* phonon_kpoint_mp_grid 1 1 1*
+!!! note
+    Phonon calculations can take a while, so it is recommended to use multiple cores if possible
 
-Test your configuration using
-
-* castep.mpi –dryrun h-BN*
-
-Congratulations. You have set up the .cell file by hand. There is also a
-*.param* file “h-BN.param” provided containing the setup to specify the
-phonon run.
-
-Once you have in place the \<seed\>.cell and \<seed\>.param files you
-are ready to submit the CASTEP job. This is done using our general
-script:
-
-> *castepsub -n 16 h-BN*
 
 which requests a 16-processor parallel run. Use the “qstat” command to
 monitor the progress of your calculation. When it has finished, you can
