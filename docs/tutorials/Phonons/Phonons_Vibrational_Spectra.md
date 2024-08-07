@@ -6,26 +6,48 @@ In this tutorial we will perform Castep phonon calculations. We will visually ex
 
 We will first perform a G point phonon calculation and generate a simple model infrared spectrum of hexagonal boron nitride (h-BN). We will then visualise and analyse the results.
 
-Your starting point will be the structure which is provided in a cif
-file named *h-BN.cif.* The Phonons manual
-(<http://www.tcm.phy.cam.ac.uk/castep/Phonons_Guide/Castep_Phonons.html>)
-contains a very similar example for the Wurtzite-structure polymorph of
-BN.
+We will use the `cell` file
 
-Use the *cif2cell* program to generate a .cell file:run the command
+*hbn.cell*
+```
+%BLOCK LATTICE_ABC
+2.500375 2.500375 6.635274
+ 90.0000000  90.0000000 120.0000000
+%ENDBLOCK LATTICE_ABC
 
-> cif2cell -p castep h-BN.cif \> h-BN.cell
+%BLOCK POSITIONS_FRAC
+B       0.0000000   0.0000000   0.5000000
+B       0.3333000   0.6667000   0.0000000
+N       0.0000000   0.0000000   0.0000000
+N       0.3333000   0.6667000   0.5000000
+%ENDBLOCK POSITIONS_FRAC
 
-then edit this using one of the text editors installed on the system.
-Uncomment the “%block species_pot” and change it to read
+SYMMETRY_GENERATE
 
-- %block species_pot
-
+%BLOCK SPECIES_POT
 NCP
+%ENDBLOCK SPECIES_POT
 
-%endblock species_pot
+KPOINTS_MP_GRID 7 7 4
+PHONON_KPOINT_MP_GRID 1 1 1
+```
 
-to select the Norm-conserving pseudopotentials library .
+and the `param` file
+
+*hbn.param*
+```
+task : PHONON
+phonon_method : DFPT
+xc_functional : LDA
+opt_strategy : SPEED
+cut_off_energy : 700.0 eV
+fix_occupancy : TRUE
+elec_method : DM
+phonon_sum_rule : TRUE
+```
+
+A key point to make is that, as specified in the `cell` file, we are using the norm-conserving pseudopotentials (`NCP`) library - this is essential to allow the use the `DFPT` method, which allows calculations outside the cell without using a supercell - something that must be done for proper phonon calculations in a crystalline system.    
+
 
 Choose the k-point set to use – remove any block KPOINT_LIST and replace
 with the line
