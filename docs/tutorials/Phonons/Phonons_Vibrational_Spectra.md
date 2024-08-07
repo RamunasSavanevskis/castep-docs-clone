@@ -98,7 +98,9 @@ The main table of results relevant to this tutorial is this
 +    12    1392.756214   c         54.8065334  Y                       N     +
 ```
 
-This tells us the frequencies in which IR (and Raman) activity is examined, whether they are active or not, and, in the case of IR, the relative intensities of their activities. 
+The frequencies are the frequencies of all the phonon modes. Note modes 3, 4 and 5 - these are all close to 0, indicating that they are the acoustic modes (we will understand what this means better once we visualise it in the next step). The "negative" frequencies aren't actually negative but rather imaginary - this means that, when calculated, the vibrational hamiltonian is not a definite positive value, and thus the distortion would stabilise the structure - this corresponds to a mechanical instability in the system.
+
+Each phonon frequency is then evaluated as to whether it is IR and/or Raman active, and, for IR only for now, the relative intensity of the IR activity. 
 
 ### Analysis of h-BN phonon output.
 
