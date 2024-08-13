@@ -199,39 +199,24 @@ Gifs of the resulting vibrations are embedded below.
 
 We can see the link between visual results to what we saw in the `phonon` and `castep` files. You can vaguely see how modes 1 and 2 appear as if they are trying to shift into another lattice. Modes 3, 4 and 5 don't contain any atoms moving relative to each other (every part of the crystal is moving together), which is what's expected of optical modes (hence the near-zero frequency). One can even see how 7 and 8 are similar to each other visually (corresponding to a similar frequency), as are 9, 10, 11 and 12.
 
-### Generation of ir spectrum
+### Visualising the Spectra
 
-The easiest way to generate a simple model ir spectrum is to use the
-“dos.pl” tool. To run this in the most effective way and automatically
-display a plot, you will need to be running an X windows server on the
-PC. In that case the command
+We will now look at how to visualise the IR and Raman spectra. dos.pl is a convenient tool to do so, and in this tutorial we will use it with xmgrace. Run the command
 
-> *dos.pl -ir -xg h-BN.phonon*
+`dos.pl -ir -xg hbn.phonon`
 
-will generate a plot script and use the “xmgrace” plotting program to
-display it. You can create a GNUPLOT script instead of xmgrace by
-changing the “-xg” flag to “-gp”. Alternatively you can generate a
-GNUPLOT script without plotting by
+This will open an xmgrace figure that looks like
 
-> *dos.pl -ir -gp -np h-BN.phonon \> h-BN-phonon.plt*
+![IR Spectrum](ir_spec.png){width="40%"}
 
-You can then copy the “h-BN-phonon.plt” back to the PC and read this
-into GNUPLOT.
+As expected, you can only see 1 peak - there are 3 IR active modes in total, 2 of which have the same frequency and 1 of which has a much lower intensity (the peak is there but is just too small to see).
 
-### Raman spectrum
+We can similarly look at the Raman spectrum by replacing `-ir` with `-raman` - this gives the following output:
 
-The calculation of a raman intensities is fairly expensive compared to
-infrared matrix elements and it is therefore not turned on by default.
-To enable this, add the keyword
+![Raman Spectrum](raman_spec.png){width="40%"}
 
- * CALCULATE_RAMAN : TRUE*
+In this case the result is virtually identical: there are only 2 Raman active modes and they correspond to identical frequencies (the positions of which are very close to the IR active ones). The intensities of the 2 results are different, but that doesn't matter as only relative intensities have any physical meaning in this case; the intensities have to be adjusted to simulate experiment regardless.
 
-RAMAN_METHOD: DFPT
-
-FIX_OCCUPANCY: TRUE
-
-to the h-BN.param file, and resubmit the job. You can then use the
-“-raman” flag of dos.pl to generate and plot a raman spectrum.
 
 ## B. Molecular modes in benzene
 
