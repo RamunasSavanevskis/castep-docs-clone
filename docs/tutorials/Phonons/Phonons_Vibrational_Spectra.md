@@ -113,40 +113,85 @@ Mode Ion                X                                   Y                   
    2   1 -0.428278409589  0.000000000000     -0.186110205437  0.000000000000      0.000000000000 -0.000000000000
 ```
 
-There are 2 tables (with the same format) like this in the file - the first is simply just the results at the gamma point, while the other is for the gamma point in 001 direction - this is also the case in the `castep` file, though there the results are identical. 
+There are 2 tables (with the same format) like this in the file - the first is simply just the results at the gamma point, while the other is for the gamma point in 001 direction - this is also the case in the `castep` file, though there the results are identical.
 
 ### Analysis of h-BN phonon output.
 
-We will use the academic tools to visualise the modes using the free
-Jmol visualiser.
+We will now visualise the `phonon` output using JMOL. To see how the ions actually move in the different modes:
 
-Use secure file transfer to copy the .phonon file back to the PC where
-Jmol is installed. Start jmol and bring up a console window from the
-right-mouse menu. To use the full power of the command-line and find the
-files it is most convenient to set JMol's current directory to the
-location of your working directory containing your output files. (It is
-possible and simpler to drag and drop the .phonon file onto Jmol window,
-but you need the power of the command line to display additional
-periodic repeats.)
+1. In the JMOL console, use the command `LOAD hbn.phonon {3 3 2} PACKED` - changing any paths as appropriate. This generates a 3x3x2 supercell, which makes it a bit easier to see what's going on
+2. Fix the unit cell using the command `"UNITCELL "a=2.5,b=2.5,c=6.635,alpha=90,beta=90,gamma=120"` - this prevents the structure from collapsing when viewing the vibrations.
+3. In the menu bar, go into `Tools -> Vibrate... -> Start vibration`.
+4. From then on, you can conveniently alternate between modes by clicking the arrows at the top of the screen (just below the menu bar). In the bottom-left of the screen, it tells you the details of the mode you are viewing.
+Gifs of the resulting vibrations are embedded below.
 
-> cd
 
-> --- report the current directory
+<html>
+    <style>
+        .arrow-button {
+            font-size: 24px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .arrow-button:disabled {
+            background-color: #d0d0d0;
+            cursor: not-allowed;
+        }
+        }
+    </style>
 
-> *cd ..* or c*d \<subdir\>* -- navigate up/down the directory tree.
+<body>
 
-Then type the Jmol command to load your .castep file
+    <button id="left-button" class="arrow-button" onclick="decrement()">&#8592;</button>
+    <button id="right-button" class="arrow-button" onclick="increment()">&#8594;</button>
 
-> <span id="anchor"></span>*load h-BN.phonon {3 3 2} PACKED*
+    <div id="display">Mode 1</div>
+    <div id="image-container">
 
-Note that while you can read in the .phonon file from Jmol's File menu,
-you need the additional opitions of the command line to display
-additional periodic repeats.
+        <img id="mode-image" src="../mode_1.gif" alt="Mode 1">
+    </div>
 
-You can then use the “Tools-Vibrate” menu to turn on mode animation, and
-navigate the modes. Can you see from the mode eigenvectors which modes
-are ir active and which are raman active? Do you agree with the ir and
-raman activity printed in the .castep file?
+    <script>
+        let x = 1;
+
+        function updateButtons() {
+            document.getElementById('left-button').disabled = (x <= 1);
+            document.getElementById('right-button').disabled = (x >= 12);
+        }
+
+        function updateImage() {
+            const img = document.getElementById('mode-image');
+            img.src = `../mode_${x}.gif`;
+            img.alt = `Mode ${x}`;
+        }
+
+        function increment() {
+            if (x < 12) {
+                x++;
+                document.getElementById('display').textContent = `Mode  ${x}`;
+                updateButtons();
+                updateImage();
+            }
+        }
+
+        function decrement() {
+            if (x > 1) {
+                x--;
+                document.getElementById('display').textContent = `Mode ${x}`;
+                updateButtons();
+                updateImage();
+            }
+        }
+
+        // Initial button state and image update
+        updateButtons();
+        updateImage();
+    </script>
+
+</body>
+</html>
+
+We can see the link between visual results to what we saw in the `phonon` and `castep` files. You can vaguely see how modes 1 and 2 appear as if they are trying to shift into another lattice. Modes 3, 4 and 5 don't contain any atoms moving relative to each other (every part of the crystal is moving together), which is what's expected of optical modes (hence the near-zero frequency). One can even see how 7 and 8 are similar to each other visually (corresponding to a similar frequency), as are 9, 10, 11 and 12. 
 
 ### Generation of ir spectrum
 
