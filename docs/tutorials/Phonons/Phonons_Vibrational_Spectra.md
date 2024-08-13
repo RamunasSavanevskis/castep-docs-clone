@@ -44,15 +44,21 @@ cut_off_energy : 700.0 eV
 fix_occupancy : TRUE
 elec_method : DM
 phonon_sum_rule : TRUE
+
+CALCULATE_RAMAN : TRUE
+RAMAN_METHOD: DFPT
+
 ```
 
-A key point to make is that, as specified in the `cell` file, we are using the norm-conserving pseudopotentials (`NCP`) library - this is essential to allow the use the `DFPT` method, which allows calculations outside the cell without using a supercell - something that must be done for proper phonon calculations in a crystalline system.    
+A key point to make is that, as specified in the `cell` file, we are using the norm-conserving pseudopotentials (`NCP`) library - this is essential to allow the use the `DFPT` method, which allows calculations outside the cell without using a supercell - something that must be done for proper phonon calculations in a crystalline system.
+
+The bottom 2 lines are to also calculate the Raman activity as well as IR. This makes the calculation take longer, and the phonon and IR calculations yield the same results, but this way you won't have to run the calculation a 2nd time when we look at those results later on in this tutorial.   
 
 The line
 
 `phonon_kpoint_mp_grid 1 1 1`
 
-is used to specify the gamma-point phonon wavevector.
+is used to specify that we are looking at the gamma-point phonon wavevector.
 
 Once the files are set up, run Castep
 
@@ -80,22 +86,22 @@ and, since we are only looking at the gamma point, all our results are under
 The main table of results relevant to this tutorial is this
 
 ```
-+  Acoustic sum rule correction <  26.548113 cm-1 applied                    +
-+     N      Frequency irrep.    ir intensity active            raman active +
-+                (cm-1)         ((D/A)**2/amu)                               +
++  Acoustic sum rule correction <  40.683968 cm-1 applied                    +
++     N      Frequency irrep.    ir intensity active  raman activity  active +
++                (cm-1)         ((D/A)**2/amu)              (A**4/amu)       +
 +                                                                            +
-+     1     -26.582880   a          0.0000000  N                       Y     +
-+     2     -26.582880   a          0.0000000  N                       Y     +
-+     3      -0.049168   b          0.0000000  N                       N     +
-+     4      -0.034768   c          0.0000000  N                       N     +
-+     5      -0.034768   c          0.0000000  N                       N     +
-+     6      77.735088   d          0.0000000  N                       N     +
-+     7     748.297431   b          4.3146565  Y                       N     +
-+     8     802.240346   d          0.0000000  N                       N     +
-+     9    1392.383294   a          0.0000000  N                       Y     +
-+    10    1392.383294   a          0.0000000  N                       Y     +
-+    11    1392.756214   c         54.8065334  Y                       N     +
-+    12    1392.756214   c         54.8065334  Y                       N     +
++     1      -0.049167   a          0.0000000  N            0.0000000  N     +
++     2      -0.034768   b          0.0000000  N            0.0000000  N     +
++     3      -0.034768   b          0.0000000  N            0.0000000  N     +
++     4       5.884970   c          0.0000000  N            0.0027626  Y     +
++     5       5.884970   c          0.0000000  N            0.0027626  Y     +
++     6      79.102129   d          0.0000000  N            0.0000000  N     +
++     7     748.397652   a          4.3158435  Y            0.0000000  N     +
++     8     802.377724   d          0.0000000  N            0.0000000  N     +
++     9    1392.655948   c          0.0000000  N          387.2810248  Y     +
++    10    1392.655948   c          0.0000000  N          387.2810248  Y     +
++    11    1393.029830   b         54.7195502  Y            0.0000000  N     +
++    12    1393.029830   b         54.7195502  Y            0.0000000  N    
 ```
 
 The frequencies are the frequencies of all the phonon modes. Note modes 3, 4 and 5 - these are all close to 0, indicating that they are the acoustic modes (we will understand what this means better once we visualise it in the next step). The "negative" frequencies aren't actually negative but rather imaginary - this means that, when calculated, the vibrational hamiltonian is not a definite positive value, and thus the distortion would stabilise the structure - this corresponds to a mechanical instability in the system.
@@ -191,7 +197,7 @@ Gifs of the resulting vibrations are embedded below.
 </body>
 </html>
 
-We can see the link between visual results to what we saw in the `phonon` and `castep` files. You can vaguely see how modes 1 and 2 appear as if they are trying to shift into another lattice. Modes 3, 4 and 5 don't contain any atoms moving relative to each other (every part of the crystal is moving together), which is what's expected of optical modes (hence the near-zero frequency). One can even see how 7 and 8 are similar to each other visually (corresponding to a similar frequency), as are 9, 10, 11 and 12. 
+We can see the link between visual results to what we saw in the `phonon` and `castep` files. You can vaguely see how modes 1 and 2 appear as if they are trying to shift into another lattice. Modes 3, 4 and 5 don't contain any atoms moving relative to each other (every part of the crystal is moving together), which is what's expected of optical modes (hence the near-zero frequency). One can even see how 7 and 8 are similar to each other visually (corresponding to a similar frequency), as are 9, 10, 11 and 12.
 
 ### Generation of ir spectrum
 
