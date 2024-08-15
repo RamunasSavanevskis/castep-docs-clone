@@ -119,7 +119,6 @@ Mode Ion                X                                   Y                   
    2   1 -0.428278409589  0.000000000000     -0.186110205437  0.000000000000      0.000000000000 -0.000000000000
 ```
 
-There are 2 tables (with the same format) like this in the file - the first is simply just the results at the gamma point, while the other is for the gamma point in 001 direction - this is also the case in the `castep` file, though there the results are identical.
 
 ### Analysis of h-BN phonon output.
 
@@ -218,6 +217,7 @@ We can similarly look at the Raman spectrum by replacing `-ir` with `-raman` - t
 In this case the result is virtually identical: there are only 2 Raman active modes and they correspond to identical frequencies (the positions of which are very close to the IR active ones). The intensities of the 2 results are different, but that doesn't matter as only relative intensities have any physical meaning in this case; the intensities have to be adjusted to simulate experiment regardless.
 
 In the end, the Raman spectra had a decent match to experiment^[[1](#1)]^, finding a single peak around 1397, compared to 1373 in experiment. The FTIR results match more poorly - the 2 active frequencies are rather similar, at 747 and 1397 in our calculation, and 790 and 1378 in experiment, but there the relative intensities are much closer together than we found^[[2](#2)]^, so the infrared spectrum looks quite a bit different.
+
 ## B. Molecular modes in benzene
 
 The next part of this practical is to compute the modes and spectrum of
