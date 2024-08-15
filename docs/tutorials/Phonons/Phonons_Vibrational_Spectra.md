@@ -217,7 +217,7 @@ We can similarly look at the Raman spectrum by replacing `-ir` with `-raman` - t
 
 In this case the result is virtually identical: there are only 2 Raman active modes and they correspond to identical frequencies (the positions of which are very close to the IR active ones). The intensities of the 2 results are different, but that doesn't matter as only relative intensities have any physical meaning in this case; the intensities have to be adjusted to simulate experiment regardless.
 
-
+In the end, the Raman spectra had a decent match to experiment^[[1](#1)]^, finding a single peak around 1397, compared to 1373 in experiment. The FTIR results match more poorly - the 2 active frequencies are rather similar, at 747 and 1397 in our calculation, and 790 and 1378 in experiment, but there the relative intensities are much closer together than we found^[[2](#2)]^, so the infrared spectrum looks quite a bit different.
 ## B. Molecular modes in benzene
 
 The next part of this practical is to compute the modes and spectrum of
@@ -269,3 +269,13 @@ with the molecular crystal. You can also use Jmol to identify the modes.
 Are all your frequencies positive? If not, can you suggest why not? Try
 investigating the effect of decreasing the geometry optimisation
 tolerance GEOM_FORCE_TOL. How does this change the frequencies?
+
+## References
+
+<a id="1"></a>
+[1] - [Record-High Responsivity and Detectivity of a Flexible Deep-Ultraviolet Photodetector Based on Solid State-Assisted Synthesized hBN Nanosheets](https://doi.org/10.1021/acsaelm.0c01021)
+
+<a id="2"></a>
+[2] - [A fexible memory device made of SnO2‑hBN
+nanocomposite exhibits stable resistive switching
+application](https://doi.org/10.1007/s10853-024-09976-9)
