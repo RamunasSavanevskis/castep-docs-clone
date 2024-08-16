@@ -220,47 +220,63 @@ In the end, the Raman spectra had a decent match to experiment^[[1](#1)]^, findi
 
 ## B. Molecular modes in benzene
 
-The next part of this practical is to compute the modes and spectrum of
-a molecule and compare the result with a calculation of a molecular
-crystal. Our example is benzene. You are supplied with pdb files
-describing a benzene molecule and of a cif structure describing a
-high-pressure crystalline polymorph, phase III. These are in both in the
-course directory.
+We will now look at the simulated IR/Raman spectra for a more interesting example - benzene. We will use the `cell` file
 
-First run the isolated molecule calculation. Using the supplied PDB
-format file and using the “pdb2cell” utility, generate a .cell file for
-a single molecule calculation. There are a few other considerations to
-take into account for an isolated molecule calculation.
+*ben.cell*
+```
+%BLOCK lattice_cart
+   ANG
+       8.60643301684681       0.111339687610194E-33    0.00000000000000
+      -4.30321650842340        7.50045743714604        0.00000000000000
+       0.00000000000000        0.00000000000000        9.24037398197401
+%ENDBLOCK lattice_cart
+%BLOCK positions_frac
+   H              0.165372872629966       0.330745745259933       0.000000000000000
+   H              0.332641698874813       0.165581276354313       0.000000000000000
+   H              0.832939577479499       0.165581276354313       0.000000000000000
+   H              0.167047254520501       0.834392387645687       0.000000000000000
+   H              0.667345133125187       0.834392387645687       0.000000000000000
+   H              0.834613959370034       0.669227918740067       0.000000000000000
+   C              0.092519552491022       0.185039104982044      -0.000000000000000
+   C              0.186182139723987       0.092587628215135       0.000000000000000
+   C              0.906405834602259       0.092587628215135       0.000000000000000
+   C              0.093580997397742       0.907386035784866      -0.000000000000000
+   C              0.813805038387124       0.907386035784866      -0.000000000000000
+   C              0.907467279508978       0.814934559017956       0.000000000000000
+%ENDBLOCK positions_frac
+PHONON_KPOINT_MP_GRID 1 1 1
+FIX_COM : true
+FIX_ALL_CELL : TRUE
+%BLOCK species_pot
+NCP
+%ENDBLOCK species_pot
+SYMMETRY_TOL :     0.001000
+kpoint_mp_grid :    1   1   1
+```
 
-1.  The size of the simulation cell governs the interactions between
-    periodic copies of the molecule and should be large enough that
-    these are negligible.
-2.  The shape of the simulation cell governs the crystallographic point
-    groups allowed in the handling of the symmetry. It should be chosen
-    to be commensurate (as far as possible) with the molecular point
-    group to maximise the use of symmetry. In the case of benzene it
-    should obviously be hexagonal, and I recommend a box 8A by 8A by 4A.
-3.  Recall that there is no electronic dispersion for a molecule, so
-    only a single electronic k-point is needed. The general rule is that
-    all “molecule in a box” calculations should use the G point only as
-    CASTEP uses special performance optimisations in this case.
+and the `param` file
 
-For simplicity use the local density approximation, the standard NCP
-library pseudopotentials.
+*ben.param*
+```
+task : PHONON
+xc_functional : LDA
+opt_strategy : SPEED
+cut_off_energy : 700.0 eV
+fix_occupancy : TRUE
+elec_method : DM
+phonon_sum_rule : TRUE
 
-In benzene not all atoms are on special symmetry sites so you should
-first perform a geometry optimisation. Then set up a follow-on
-calculation to compute the Gamma point phonons. The Phonons User Guide
-on the WWW should help you fill in the details, but please ask if you
-are stuck.
 
-Benzene Phase III: The next stage is to compute the gamma point phonon
-modes of the molecular crystal of benzene in the high pressure
-polymorph, Phase III. You are supplied with a .cif file. You should use
-a 2x2x2 grid of electronic k-points, as dispersion is non-zero in this
-molecular crystal. Make sure that symmetry is detected and enabled. Use
-the same .param file as for the molecular case to ensure the settings
-are the same.
+CALCULATE_RAMAN : TRUE
+RAMAN_METHOD: DFPT
+```
+
+We are again only looking at the G-point; there is no electronic dispersion in a molecule so it'd be pointless to have look at multiple q-points. Since we are looking at just a single molecule, the lattice size is set to a size where periodic interaction is negligible - making it larger may improve the results slightly but then the speed of the calculation would suffer greatly. The symmetry of the cell is naturally hexagonal.
+
+For simplicity we are using the local density approximation, and the standard NCP library pseudopotentials.
+
+
+
 
 Once these calculations have completed you should generate a phonon DOS
 and ir spectra as in the previous practical and compare the molecule
@@ -279,3 +295,12 @@ tolerance GEOM_FORCE_TOL. How does this change the frequencies?
 [2] - [A fexible memory device made of SnO2‑hBN
 nanocomposite exhibits stable resistive switching
 application](https://doi.org/10.1007/s10853-024-09976-9)
+
+
+Benzene Phase III: The next stage is to compute the gamma point phonon
+modes of the molecular crystal of benzene in the high pressure
+polymorph, Phase III. You are supplied with a .cif file. You should use
+a 2x2x2 grid of electronic k-points, as dispersion is non-zero in this
+molecular crystal. Make sure that symmetry is detected and enabled. Use
+the same .param file as for the molecular case to ensure the settings
+are the same.
