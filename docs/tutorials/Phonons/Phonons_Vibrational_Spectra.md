@@ -288,8 +288,7 @@ We are again only looking at the G-point; there is no electronic dispersion in a
 
 For simplicity we are using the local density approximation, and the standard NCP library pseudopotentials.
 
-
-
+After running Castep, have a quick look at the `.phonon` or `.castep` output file again. The key difference is that there are now 36 modes. This is entirely expected: the number of modes is equal to 3 * the number of atoms in the primitive cell, and benzene (C~6~H~6~) has 12 atoms. This time, the first 3 modes are imaginary (displayed as negative), and modes 4, 5 and 6 correspond to the acoustic modes. 
 
 Once these calculations have completed you should generate a phonon DOS
 and ir spectra as in the previous practical and compare the molecule
