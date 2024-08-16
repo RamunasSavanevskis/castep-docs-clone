@@ -288,11 +288,23 @@ We are again only looking at the G-point; there is no electronic dispersion in a
 
 For simplicity we are using the local density approximation, and the standard NCP library pseudopotentials.
 
-After running Castep, have a quick look at the `.phonon` or `.castep` output file again. The key difference is that there are now 36 modes. This is entirely expected: the number of modes is equal to 3 * the number of atoms in the primitive cell, and benzene (C~6~H~6~) has 12 atoms. This time, the first 3 modes are imaginary (displayed as negative), and modes 4, 5 and 6 correspond to the acoustic modes. 
+After running Castep, have a quick look at the `.phonon` or `.castep` output file again. The key difference is that there are now 36 modes. This is entirely expected: the number of modes is equal to 3 * the number of atoms in the primitive cell, and benzene (C~6~H~6~) has 12 atoms. This time, the first 3 modes have an imaginary frequency (displayed as negative), and modes 4, 5 and 6 correspond to the acoustic modes.
 
-Once these calculations have completed you should generate a phonon DOS
-and ir spectra as in the previous practical and compare the molecule
-with the molecular crystal. You can also use Jmol to identify the modes.
+With more modes, you can get a better picture of the phonon DOS by plotting it with the keyword `-w 30` using the same `dos.pl` keyword as above - this adds some realistic broadening. This gives the figure below:
+
+![Benzene phonon dos](benzene_dos.png){width="70%"}
+
+The broadened IR spectrum is obtained the same way, and is shown below:
+
+![Benzene IR](benzene_ir.png){width="70%"}
+
+and the Raman spectrum looks like
+
+![Benzene Raman](benzene_raman.png){width="70%"}
+
+You may compare the IR results to that in the [NIST Database](https://webbook.nist.gov/cgi/inchi?ID=C71432&Type=IR-SPEC&Index=1#IR-SPEC) - it is rather similar, though the broadening fails to properly simulate experiment, and it is missing the small peaks between 1500 and 2000cm^-1^. It is worth noting that these calculations are ground state - the results will naturally vary when there is pressure and temperature involved, since vibrations are being examined.
+
+
 
 Are all your frequencies positive? If not, can you suggest why not? Try
 investigating the effect of decreasing the geometry optimisation
