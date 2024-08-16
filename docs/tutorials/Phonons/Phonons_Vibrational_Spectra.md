@@ -85,6 +85,8 @@ and, since we are only looking at the gamma point, all our results are under
 
 The main table of results relevant to this tutorial is this
 
+<a id="vib_table"></a>
+
 ```
 +  Acoustic sum rule correction <  40.683968 cm-1 applied                    +
 +     N      Frequency irrep.    ir intensity active  raman activity  active +
@@ -200,27 +202,38 @@ We can see the link between visual results to what we saw in the `phonon` and `c
 
 ### Visualising the Spectra
 
-We will now look at how to visualise the IR and Raman spectra. dos.pl is a convenient tool to do so, and in this tutorial we will use it with xmgrace. Run the command
+We will now look at how to visualise the phonon DOS, IR and Raman spectra. dos.pl is a convenient tool to do so, and in this tutorial we will use it with xmgrace. To visualise the full phonon DOS, run the command
+
+`dos.pl -xg hbn.phonon`
+
+This gives the xmgrace figure
+
+![Phonon DOS](hbn_phonon_dos.png){width="70%"}
+
+This gives us the same information as in the vibrational frequency table [above](#vib_table) - there are a total of 5 peaks (including the one that appears as if it is on 0 - it isn't actually on 0, just very close to it: it is just below 6cm^-1^), and in there are 5 noticeably different, positive and real mode frequencies.
+
+Now let's run the command
 
 `dos.pl -ir -xg hbn.phonon`
 
-This will open an xmgrace figure that looks like
+The `-ir` keyword displays the infrared spectra. This will open an xmgrace figure that looks like
 
-![IR Spectrum](ir_spec.png){width="40%"}
+![IR Spectrum](ir_spec.png){width="70%"}
 
-As expected, you can only see 1 peak - there are 3 IR active modes in total, 2 of which have the same frequency and 1 of which has a much lower intensity (the peak is there but is just too small to see).
+
+As expected, you can see 1 large peak and 1 very small one - there are 3 IR active modes in total, 2 of which have the same frequency and 1 of which has a much lower intensity. Both the peaks are in the same positions as the phonon DOS above, but there is now a calculated intensity (rather than just flat number of modes at that frequency) and only the IR active ones are displayed.
 
 We can similarly look at the Raman spectrum by replacing `-ir` with `-raman` - this gives the following output:
 
-![Raman Spectrum](raman_spec.png){width="40%"}
+![Raman Spectrum](raman_spec.png){width="70%"}
 
-In this case the result is virtually identical: there are only 2 Raman active modes and they correspond to identical frequencies (the positions of which are very close to the IR active ones). The intensities of the 2 results are different, but that doesn't matter as only relative intensities have any physical meaning in this case; the intensities have to be adjusted to simulate experiment regardless.
+There are 4 Raman active modes, 2 of which have negligible intensity, and the 2 others have identical frequencies, so only one peak is seen. The intensities of the 2 results are different, but that doesn't matter as only relative intensities have any physical meaning in this case; the intensities have to be adjusted to simulate experiment regardless.
 
-In the end, the Raman spectra had a decent match to experiment^[[1](#1)]^, finding a single peak around 1397, compared to 1373 in experiment. The FTIR results match more poorly - the 2 active frequencies are rather similar, at 747 and 1397 in our calculation, and 790 and 1378 in experiment, but there the relative intensities are much closer together than we found^[[2](#2)]^, so the infrared spectrum looks quite a bit different.
+In the end, the Raman spectra had a decent match to experiment^[[1](#1)]^, finding a single peak around 1397cm^-1^, compared to 1373cm^-1^ in experiment. The FTIR results match more poorly - the 2 active frequencies are rather similar, at 747cm^-1^ and 1397cm^-1^ in our calculation, and 790cm^-1^ and 1378cm^-1^ in experiment, but there the relative intensities are much closer together than we found^[[2](#2)]^, so the infrared spectrum looks quite a bit different.
 
 ## B. Molecular modes in benzene
 
-We will now look at the simulated IR/Raman spectra for a more interesting example - benzene. We will use the `cell` file
+We will now look at the phonon DOS, IR and Raman spectra for a more interesting example - benzene. We will use the `cell` file
 
 *ben.cell*
 ```
