@@ -305,11 +305,6 @@ and the Raman spectrum looks like
 You may compare the IR results to that in the [NIST Database](https://webbook.nist.gov/cgi/inchi?ID=C71432&Type=IR-SPEC&Index=1#IR-SPEC) - it is rather similar, though the broadening fails to properly simulate experiment, and it is missing the small peaks between 1500 and 2000cm^-1^. It is worth noting that these calculations are ground state - the results will naturally vary when there is pressure and temperature involved, since vibrations are being examined.
 
 
-
-Are all your frequencies positive? If not, can you suggest why not? Try
-investigating the effect of decreasing the geometry optimisation
-tolerance GEOM_FORCE_TOL. How does this change the frequencies?
-
 ## References
 
 <a id="1"></a>
@@ -319,12 +314,3 @@ tolerance GEOM_FORCE_TOL. How does this change the frequencies?
 [2] - [A fexible memory device made of SnO2‑hBN
 nanocomposite exhibits stable resistive switching
 application](https://doi.org/10.1007/s10853-024-09976-9)
-
-
-Benzene Phase III: The next stage is to compute the gamma point phonon
-modes of the molecular crystal of benzene in the high pressure
-polymorph, Phase III. You are supplied with a .cif file. You should use
-a 2x2x2 grid of electronic k-points, as dispersion is non-zero in this
-molecular crystal. Make sure that symmetry is detected and enabled. Use
-the same .param file as for the molecular case to ensure the settings
-are the same.
