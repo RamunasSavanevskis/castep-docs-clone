@@ -38,7 +38,8 @@ opt_strategy : SPEED
 fix_occupancy : TRUE
 elec_method : DM
 phonon_sum_rule : TRUE
-phonon_calculate_dos : TRUE
+phonon_fine_method : INTERPOLATE
+#continuation : nah.check
 ```
 
 The flowchart below outlines the steps and results for getting and continuing the DOS and bandstructure results. Any `.pl` boxes are what to put in the command line, and the other boxes are information to put into the `cell` file. For continuations, do not remove the "non-fine" information - so the lines
@@ -48,7 +49,7 @@ PHONON_KPOINT_MP_GRID 4 4 4
 phonon_kpoint_mp_offset 0.125 0.125 0.125
 ```
 
-should remains, with the "fine" information added in as specified in the flowchart below.
+should remains, with the "fine" information added in as specified in the flowchart below. Make sure to uncomment `#continuation : nah.check` when performing a continuation - `phonon_fine_method : INTERPOLATE` simply doesn't do anything if you're not calculating any fine information - it only plays a role during the continuations in this example.  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -289,63 +290,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </html>
 
-
-
-
-From G point only calculations we now explore the whole of the Brillouin
-zone of phonon wavevectors. Our example is the rocksalt-structured
-hydride, NaH which should run quickly enough to return results in a few
-minutes. Based on previous exercises, lectures and the user manual, you
-should be able to set up and run a DFPT phonon dispersion calculation
-and display a well converged set of dispersion curves.
-
-Some suitable settings are
-
-- The primitive fcc unit cell of the B1 rocksalt structure has
-  a=b=c=3.393405, ===60, with the Na ion at (0,0,0) and the H ion at
-  (1/2,1/2,1/2). This is a high-symmetry structure so it is important to
-  instruct CASTEP to generate and use the full symmetry set.
-
-- Use norm-conserving pseudopotentials
-
-  %block species_pot
-
-NCP
-
-%endblock species_pot
-
-in the .cell file and “basis_precision : fine” in the .param file.
-
-- A suitable phonon qpoint grid for the interpolation is an offset 4x4x4
-  grid
-
-   * phonon_kpoint_mp_grid 4 4 4*
-
-  phonon_kpoint_mp_offset 0.125 0.125 0.125
-
-- A suitable list of points for the fine q-point path for FCC is
-
-   * %block phonon_fine_kpoint_path*
-
-  0.0 0.0 0.0 ! Gamma
-
-  0.5 0.5 0.0 ! X (along Delta
-
-  1.0 1.0 1.0 ! Gamma (Sigma )
-
-  0.5 0.5 0.5 ! L (Delta)
-
-  0.5 0.75 0.25 ! W (Q)
-
-  0.5 0.5 0.0 ! X (Z)
-
-  %endblock phonon_fine_kpoint_path
-
-You will first need to perform a k-point convergence test. For a phonon
-calculation, convergence of the *forces* is an appropriate test
-criterion. Since all of the ions are on symmetry positions the forces
-are zero by symmetry. Try to think of a way around this obstacle. And
-adopt a suitable compromise between accuracy and run-time.
+It is generally best to start off with a small grid calculation, as we did here with the line `PHONON_KPOINT_MP_GRID 4 4 4`, and then use interpolation to either get a finer grid or to find the results on certain paths for a bandstructure. There is an option to start with `PHONON_KPOINT_MP_PATH`, but that is significantly slower - starting with a grid is generally the better approach.
 
 ## C.II Phonon DOS using interpolation
 
