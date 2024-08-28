@@ -1,5 +1,3 @@
-# C. Phonon Dispersion and DOS
-
 In this tutorial, we will examine the phonon DOS and dispersion curves of rocksalt NaH, and examine how the results may be improved (and run quicker) using continuations.
 
 We will use the `cell` file
