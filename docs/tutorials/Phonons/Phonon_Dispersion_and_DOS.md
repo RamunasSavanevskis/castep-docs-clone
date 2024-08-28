@@ -290,36 +290,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </html>
 
-It is generally best to start off with a small grid calculation, as we did here with the line `PHONON_KPOINT_MP_GRID 4 4 4`, and then use interpolation to either get a finer grid or to find the results on certain paths for a bandstructure. There is an option to start with `PHONON_KPOINT_MP_PATH`, but that is significantly slower - starting with a grid is generally the better approach.
+It is generally best to start off with a small grid calculation, as we did here with the line `PHONON_KPOINT_MP_GRID 4 4 4`, and then use interpolation to either get a finer grid or to find the results on certain paths for a bandstructure. There is an option to start with `PHONON_KPOINT_PATH`, but that is significantly slower - starting with a grid is generally the better approach.
 
-## C.II Phonon DOS using interpolation
+In the example above, we have specified information that we know from crystallography - we told which `phonon_kpoint_mp_offset` to use and specified the `phonon_fine_kpoint_path`. There is an option to have Castep calculate the offset for you by using the line `phonon_kpoint_mp_offset : include_gamma` (rather than inputting it ourselves as we did here), and leaving the fine path block blank means it'll choose the path for you based on the high symmetry points of the crystal provided.
 
-The task here is to use the NaH example to compute and display not a
-dispersion curve but a density of states. This will exploit CASTEPs
-interpolation functionality, and you will be able to compute a good DOS
-without the need the repeat the expensive electronic structure
-calculation. To do this you will need to set up a calculation neatly
-identical to your previous one but with two differences.
+There is even an option to manually specify each k-point which to examine by using the block `phonon_fine_kpoint_list`.
 
-1.  The calculation should be set up as a continuation. If your previous
-    run wrote a .check file named “NaH-disp.check” for example, then the
-    param file should contain the line
-
-     * continuation : NaH-disp.check*
-
-2.  Instead of a %block phonon_fine_kpoint_list in the .cell file, you
-    can specify a grid
-
-    *phonon_fine_kpoint_mp_grid 16 16 16*
-
-You can run CASTEP on just 1-4 processors for this
-
-You can try this several times with different fine q-point grids.
-
-This will produce a .castep and .phonon file as before. You may analyse
-the .phonon file and generate a DOS using the “dos.pl” script
-
-> *dos.pl -xg NaH-dos.phonon*
-
-(again, an X server running on the PC will be needed for grace to
-display) .
+For the fine grid, there is also an option to specify the spacing via `phonon_fine_kpoint_mp_spacing` as an alternative to `phonon_fine_kpoint_mp_grid`.
